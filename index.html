@@ -171,102 +171,29 @@
             border-bottom: 2px solid #F1F5F9;
         }
 
-        .payment-requests {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .payment-request {
-            background: #F9FAFB;
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 5px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-
-        .payment-request:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .request-header {
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .request-book {
-            font-weight: 600;
-            color: var(--text);
-            font-size: 1.3rem;
-        }
-
-        .request-amount {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 1.4rem;
-        }
-
-        .request-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
             margin-bottom: 20px;
         }
 
-        .request-detail {
-            font-size: 1rem;
-        }
-
-        .request-detail .label {
-            color: #6B7280;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .request-detail .value {
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .request-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .approve-btn, .reject-btn {
-            padding: 12px 24px;
+        .add-book-btn {
+            background: var(--success);
+            color: white;
             border: none;
+            padding: 12px 24px;
             border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .approve-btn {
-            background: var(--success);
-            color: white;
-        }
-
-        .approve-btn:hover {
+        .add-book-btn:hover {
             background: #059669;
-            transform: translateY(-2px);
-        }
-
-        .reject-btn {
-            background: var(--error);
-            color: white;
-        }
-
-        .reject-btn:hover {
-            background: #DC2626;
             transform: translateY(-2px);
         }
 
@@ -282,12 +209,18 @@
             padding: 25px;
             border-radius: 15px;
             border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .book-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 15px;
         }
 
@@ -295,11 +228,16 @@
             font-weight: 600;
             color: var(--text);
             font-size: 1.2rem;
+            line-height: 1.4;
         }
 
-        .book-price {
-            font-weight: 700;
-            color: var(--accent);
+        .book-badge {
+            background: var(--accent);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
 
         .book-details {
@@ -316,6 +254,7 @@
         .book-detail .label {
             color: #6B7280;
             font-weight: 500;
+            margin-bottom: 5px;
         }
 
         .book-actions {
@@ -354,6 +293,155 @@
             background: #DC2626;
         }
 
+        /* Book Form Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #F1F5F9;
+        }
+
+        .modal-header h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-modal {
+            background: var(--error);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: #DC2626;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .save-btn, .cancel-btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .save-btn {
+            background: var(--success);
+            color: white;
+            flex: 2;
+        }
+
+        .save-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .cancel-btn {
+            background: #6B7280;
+            color: white;
+            flex: 1;
+        }
+
+        .cancel-btn:hover {
+            background: #4B5563;
+        }
+
         /* Login Form */
         .login-container {
             display: flex;
@@ -380,33 +468,6 @@
         .login-form p {
             color: #6B7280;
             margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #E5E7EB;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
         }
 
         .login-btn {
@@ -442,16 +503,18 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .request-details {
-                grid-template-columns: 1fr;
-            }
-            
-            .request-actions {
-                flex-direction: column;
-            }
-            
             .book-management {
                 grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
             }
         }
 
@@ -462,6 +525,10 @@
             
             header h1 {
                 font-size: 1.8rem;
+            }
+            
+            .book-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -474,7 +541,7 @@
                     <i class="fas fa-arrow-left"></i> ইউজার সাইট
                 </a>
                 <h1>📚 কিড্ডো বুক স্টল - অ্যাডমিন</h1>
-                <p>অ্যাডমিন প্যানেল - অর্ডার এবং বই ম্যানেজমেন্ট</p>
+                <p>বই ম্যানেজমেন্ট এবং অর্ডার কন্ট্রোল</p>
                 <div class="logout-btn" id="logoutBtn" style="display: none;">
                     <i class="fas fa-sign-out-alt"></i> লগআউট
                 </div>
@@ -487,7 +554,7 @@
                 <p>অ্যাডমিন প্যানেলে অ্যাক্সেস করতে লগইন করুন</p>
                 <div class="form-group">
                     <label for="adminEmail">ইমেইল</label>
-                    <input type="email" id="adminEmail" placeholder="ইমেইল দিন" required>
+                    <input type="email" id="adminEmail" placeholder="admin@kiddo.com" required>
                 </div>
                 <div class="form-group">
                     <label for="adminPassword">পাসওয়ার্ড</label>
@@ -520,17 +587,105 @@
             </div>
 
             <div class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book"></i> বই ম্যানেজমেন্ট</h2>
+                    <button class="add-book-btn" id="addBookBtn">
+                        <i class="fas fa-plus"></i> নতুন বই অ্যাড করুন
+                    </button>
+                </div>
+                <div class="book-management" id="bookManagement">
+                    <!-- Book management will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="admin-section">
                 <h2><i class="fas fa-clock"></i> বিচারাধীন পেমেন্ট রিকোয়েস্ট</h2>
                 <div class="payment-requests" id="paymentRequests">
                     <!-- Payment requests will be dynamically added here -->
                 </div>
             </div>
+        </div>
 
-            <div class="admin-section">
-                <h2><i class="fas fa-book"></i> বই ম্যানেজমেন্ট</h2>
-                <div class="book-management" id="bookManagement">
-                    <!-- Book management will be dynamically added here -->
+        <!-- Book Form Modal -->
+        <div class="modal" id="bookModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-book"></i> <span id="modalTitle">নতুন বই অ্যাড করুন</span></h3>
+                    <button class="close-modal" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
+                
+                <form id="bookForm">
+                    <div class="form-group">
+                        <label for="bookEmoji">বইয়ের ইমোজি *</label>
+                        <input type="text" id="bookEmoji" placeholder="📚" required maxlength="2">
+                        <small style="color: #6B7280; font-size: 0.8rem;">একটি ইমোজি দিন (যেমন: 📚, 🔬, 💻)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookTitle">বইয়ের নাম *</label>
+                        <input type="text" id="bookTitle" placeholder="বইয়ের নাম লিখুন" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookDescription">বইয়ের বিবরণ *</label>
+                        <textarea id="bookDescription" placeholder="বইয়ের সংক্ষিপ্ত বিবরণ লিখুন" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookYear">বইয়ের সাল *</label>
+                            <select id="bookYear" required>
+                                <option value="">সাল নির্বাচন করুন</option>
+                                <option value="2024">২০২৪</option>
+                                <option value="2023">২০২৩</option>
+                                <option value="2022">২০২২</option>
+                                <option value="2021">২০২১</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookType">বইয়ের ধরন *</label>
+                            <select id="bookType" required>
+                                <option value="">ধরন নির্বাচন করুন</option>
+                                <option value="free">ফ্রি</option>
+                                <option value="premium">প্রিমিয়াম</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="priceGroup" style="display: none;">
+                        <label for="bookPrice">বইয়ের দাম (টাকা) *</label>
+                        <input type="number" id="bookPrice" placeholder="দাম লিখুন" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="downloadLink">ডাউনলোড লিংক *</label>
+                        <input type="url" id="downloadLink" placeholder="https://drive.google.com/..." required>
+                    </div>
+
+                    <div class="form-group" id="driveLinkGroup" style="display: none;">
+                        <label for="driveLink">গুগল ড্রাইভ লিংক (প্রিমিয়াম)</label>
+                        <input type="url" id="driveLink" placeholder="https://drive.google.com/...">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="isActive" checked>
+                            <label for="isActive">বইটি সক্রিয় করুন</label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">
+                            <i class="fas fa-save"></i> সেভ করুন
+                        </button>
+                        <button type="button" class="cancel-btn" id="cancelBookBtn">
+                            <i class="fas fa-times"></i> বাতিল করুন
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -555,22 +710,31 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
-        const auth = firebase.auth();
 
         // DOM Elements
         const loginContainer = document.getElementById('loginContainer');
         const adminPanel = document.getElementById('adminPanel');
         const logoutBtn = document.getElementById('logoutBtn');
         const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const addBookBtn = document.getElementById('addBookBtn');
+        const bookModal = document.getElementById('bookModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBookBtn = document.getElementById('cancelBookBtn');
+        const bookForm = document.getElementById('bookForm');
+        const modalTitle = document.getElementById('modalTitle');
+        const bookType = document.getElementById('bookType');
+        const priceGroup = document.getElementById('priceGroup');
+        const driveLinkGroup = document.getElementById('driveLinkGroup');
 
-        // Admin credentials (In production, use Firebase Auth with custom claims)
+        // Global variables
+        let currentEditingBook = null;
+        let books = [];
+
+        // Admin credentials
         const ADMIN_CREDENTIALS = {
             email: "admin@kiddo.com",
-            password: "kiddo123"
+            password: "admin123"
         };
-
-        // Sample book data (same as user site)
-        const books = [ ];
 
         // Initialize the app
         function initApp() {
@@ -590,6 +754,30 @@
         function setupEventListeners() {
             adminLoginBtn.addEventListener('click', adminLogin);
             logoutBtn.addEventListener('click', adminLogout);
+            addBookBtn.addEventListener('click', openAddBookModal);
+            closeModal.addEventListener('click', closeBookModal);
+            cancelBookBtn.addEventListener('click', closeBookModal);
+            bookForm.addEventListener('submit', saveBook);
+            
+            // Show/hide price field based on book type
+            bookType.addEventListener('change', function() {
+                if (this.value === 'premium') {
+                    priceGroup.style.display = 'block';
+                    driveLinkGroup.style.display = 'block';
+                    document.getElementById('bookPrice').required = true;
+                } else {
+                    priceGroup.style.display = 'none';
+                    driveLinkGroup.style.display = 'none';
+                    document.getElementById('bookPrice').required = false;
+                }
+            });
+
+            // Close modal when clicking outside
+            bookModal.addEventListener('click', function(e) {
+                if (e.target === bookModal) {
+                    closeBookModal();
+                }
+            });
         }
 
         // Admin login
@@ -598,7 +786,6 @@
             const password = document.getElementById('adminPassword').value;
 
             if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
-                // Successful login
                 localStorage.setItem('adminLoggedIn', 'true');
                 showAdminPanel();
             } else {
@@ -627,24 +814,131 @@
             logoutBtn.style.display = 'none';
         }
 
+        // Open add book modal
+        function openAddBookModal() {
+            currentEditingBook = null;
+            modalTitle.textContent = 'নতুন বই অ্যাড করুন';
+            bookForm.reset();
+            priceGroup.style.display = 'none';
+            driveLinkGroup.style.display = 'none';
+            bookModal.classList.add('active');
+        }
+
+        // Open edit book modal
+        function openEditBookModal(book) {
+            currentEditingBook = book;
+            modalTitle.textContent = 'বই এডিট করুন';
+            
+            // Fill form with book data
+            document.getElementById('bookEmoji').value = book.emoji || '📚';
+            document.getElementById('bookTitle').value = book.title;
+            document.getElementById('bookDescription').value = book.description;
+            document.getElementById('bookYear').value = book.year;
+            document.getElementById('bookType').value = book.isPremium ? 'premium' : 'free';
+            document.getElementById('downloadLink').value = book.downloadLink;
+            document.getElementById('isActive').checked = book.isActive !== false;
+            
+            if (book.isPremium) {
+                priceGroup.style.display = 'block';
+                driveLinkGroup.style.display = 'block';
+                document.getElementById('bookPrice').value = book.price;
+                document.getElementById('driveLink').value = book.driveLink || '';
+            } else {
+                priceGroup.style.display = 'none';
+                driveLinkGroup.style.display = 'none';
+            }
+            
+            bookModal.classList.add('active');
+        }
+
+        // Close book modal
+        function closeBookModal() {
+            bookModal.classList.remove('active');
+            currentEditingBook = null;
+        }
+
+        // Save book (add or edit)
+        async function saveBook(e) {
+            e.preventDefault();
+            
+            const bookData = {
+                emoji: document.getElementById('bookEmoji').value,
+                title: document.getElementById('bookTitle').value,
+                description: document.getElementById('bookDescription').value,
+                year: parseInt(document.getElementById('bookYear').value),
+                isPremium: document.getElementById('bookType').value === 'premium',
+                downloadLink: document.getElementById('downloadLink').value,
+                isActive: document.getElementById('isActive').checked,
+                downloadCount: currentEditingBook ? currentEditingBook.downloadCount : 0,
+                createdAt: currentEditingBook ? currentEditingBook.createdAt : new Date(),
+                updatedAt: new Date()
+            };
+
+            if (bookData.isPremium) {
+                bookData.price = parseInt(document.getElementById('bookPrice').value);
+                bookData.driveLink = document.getElementById('driveLink').value;
+            } else {
+                bookData.price = 0;
+                bookData.driveLink = '';
+            }
+
+            try {
+                if (currentEditingBook) {
+                    // Update existing book
+                    await db.collection('books').doc(currentEditingBook.id).update(bookData);
+                    alert('বই সফলভাবে আপডেট করা হয়েছে!');
+                } else {
+                    // Add new book
+                    await db.collection('books').add(bookData);
+                    alert('বই সফলভাবে অ্যাড করা হয়েছে!');
+                }
+                
+                closeBookModal();
+                loadAdminData();
+            } catch (error) {
+                console.error('বই সেভ করতে সমস্যা:', error);
+                alert('বই সেভ করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+            }
+        }
+
+        // Delete book
+        async function deleteBook(bookId) {
+            if (confirm('আপনি কি নিশ্চিত এই বইটি ডিলিট করতে চান?')) {
+                try {
+                    await db.collection('books').doc(bookId).delete();
+                    alert('বই সফলভাবে ডিলিট করা হয়েছে!');
+                    loadAdminData();
+                } catch (error) {
+                    console.error('বই ডিলিট করতে সমস্যা:', error);
+                    alert('বই ডিলিট করতে সমস্যা হয়েছে।');
+                }
+            }
+        }
+
         // Load admin data
         async function loadAdminData() {
             try {
-                // Calculate stats
-                const totalBooks = books.length;
-                const totalDownloads = books.reduce((sum, book) => sum + book.downloadCount, 0);
+                // Load books from Firebase
+                const booksSnapshot = await db.collection('books').get();
+                books = [];
+                booksSnapshot.forEach(doc => {
+                    books.push({ id: doc.id, ...doc.data() });
+                });
                 
-                // Get payments from Firebase
+                // Load payments from Firebase
                 const paymentsSnapshot = await db.collection('payments').get();
                 const payments = [];
                 paymentsSnapshot.forEach(doc => {
                     payments.push({ id: doc.id, ...doc.data() });
                 });
-                
+
+                // Calculate stats
+                const totalBooks = books.length;
+                const totalDownloads = books.reduce((sum, book) => sum + (book.downloadCount || 0), 0);
                 const pendingPayments = payments.filter(p => p.status === 'pending').length;
                 const totalRevenue = payments
                     .filter(p => p.status === 'approved')
-                    .reduce((sum, payment) => sum + payment.bookPrice, 0);
+                    .reduce((sum, payment) => sum + (payment.bookPrice || 0), 0);
 
                 // Update stats
                 document.getElementById('totalBooks').textContent = totalBooks;
@@ -652,14 +946,75 @@
                 document.getElementById('pendingPayments').textContent = pendingPayments;
                 document.getElementById('totalRevenue').textContent = `৳ ${totalRevenue}`;
 
-                // Load payment requests
-                loadPaymentRequests(payments);
-                
                 // Load book management
                 loadBookManagement();
+                
+                // Load payment requests
+                loadPaymentRequests(payments);
             } catch (error) {
                 console.error("অ্যাডমিন ডেটা লোড করতে সমস্যা:", error);
             }
+        }
+
+        // Load book management
+        function loadBookManagement() {
+            const bookManagement = document.getElementById('bookManagement');
+            
+            if (books.length === 0) {
+                bookManagement.innerHTML = `
+                    <div style="text-align: center; color: #6B7280; padding: 40px; grid-column: 1 / -1;">
+                        <i class="fas fa-book" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <p>কোন বই পাওয়া যায়নি</p>
+                        <p>নতুন বই অ্যাড করুন</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            bookManagement.innerHTML = books.map(book => `
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-title">${book.emoji || '📚'} ${book.title}</div>
+                        <div class="book-badge">${book.isPremium ? 'প্রিমিয়াম' : 'ফ্রি'}</div>
+                    </div>
+                    <div class="book-details">
+                        <div class="book-detail">
+                            <span class="label">বিবরণ:</span>
+                            <span>${book.description}</span>
+                        </div>
+                        <div class="book-detail">
+                            <span class="label">সাল:</span>
+                            <span>${book.year}</span>
+                        </div>
+                        <div class="book-detail">
+                            <span class="label">দাম:</span>
+                            <span>${book.isPremium ? `৳ ${book.price}` : 'ফ্রি'}</span>
+                        </div>
+                        <div class="book-detail">
+                            <span class="label">ডাউনলোড:</span>
+                            <span>${book.downloadCount || 0} বার</span>
+                        </div>
+                        <div class="book-detail">
+                            <span class="label">স্ট্যাটাস:</span>
+                            <span style="color: ${book.isActive !== false ? '#10B981' : '#EF4444'}">
+                                ${book.isActive !== false ? 'সক্রিয়' : 'নিষ্ক্রিয়'}
+                            </span>
+                        </div>
+                        <div class="book-detail">
+                            <span class="label">আপডেট:</span>
+                            <span>${new Date(book.updatedAt?.toDate()).toLocaleDateString('bn-BD')}</span>
+                        </div>
+                    </div>
+                    <div class="book-actions">
+                        <button class="edit-btn" onclick="openEditBookModal(${JSON.stringify(book).replace(/"/g, '&quot;')})">
+                            <i class="fas fa-edit"></i> এডিট
+                        </button>
+                        <button class="delete-btn" onclick="deleteBook('${book.id}')">
+                            <i class="fas fa-trash"></i> ডিলিট
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Load payment requests
@@ -700,10 +1055,6 @@
                             <span class="label">ট্রানজেকশন আইডি:</span>
                             <span class="value">${payment.transactionId}</span>
                         </div>
-                        <div class="request-detail">
-                            <span class="label">অর্ডার তারিখ:</span>
-                            <span class="value">${new Date(payment.timestamp?.toDate()).toLocaleDateString('bn-BD')}</span>
-                        </div>
                     </div>
                     <div class="request-actions">
                         <button class="approve-btn" onclick="approvePayment('${payment.id}', '${payment.userId}')">
@@ -717,47 +1068,7 @@
             `).join('');
         }
 
-        // Load book management
-        function loadBookManagement() {
-            const bookManagement = document.getElementById('bookManagement');
-            
-            bookManagement.innerHTML = books.map(book => `
-                <div class="book-card">
-                    <div class="book-header">
-                        <div class="book-title">${book.title}</div>
-                        <div class="book-price">${book.isPremium ? `৳ ${book.price}` : 'ফ্রি'}</div>
-                    </div>
-                    <div class="book-details">
-                        <div class="book-detail">
-                            <span class="label">ডাউনলোড:</span>
-                            <span>${book.downloadCount} বার</span>
-                        </div>
-                        <div class="book-detail">
-                            <span class="label">ধরন:</span>
-                            <span>${book.isPremium ? 'প্রিমিয়াম' : 'ফ্রি'}</span>
-                        </div>
-                        <div class="book-detail">
-                            <span class="label">সাল:</span>
-                            <span>${book.year}</span>
-                        </div>
-                        <div class="book-detail">
-                            <span class="label">স্ট্যাটাস:</span>
-                            <span>${book.isPremium ? 'সক্রিয়' : 'ফ্রি'}</span>
-                        </div>
-                    </div>
-                    <div class="book-actions">
-                        <button class="edit-btn" onclick="editBook(${book.id})">
-                            <i class="fas fa-edit"></i> এডিট
-                        </button>
-                        <button class="delete-btn" onclick="deleteBook(${book.id})">
-                            <i class="fas fa-trash"></i> ডিলিট
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Admin functions
+        // Admin functions for payments
         async function approvePayment(paymentId, userId) {
             try {
                 await db.collection('payments').doc(paymentId).update({
@@ -767,9 +1078,6 @@
                 
                 alert('পেমেন্ট অ্যাপ্রুভ করা হয়েছে!');
                 loadAdminData();
-                
-                // Send approval notification (you can implement email here)
-                console.log(`Payment ${paymentId} approved for user ${userId}`);
                 
             } catch (error) {
                 console.error("পেমেন্ট অ্যাপ্রুভ করতে সমস্যা:", error);
@@ -788,22 +1096,6 @@
             } catch (error) {
                 console.error("পেমেন্ট রিজেক্ট করতে সমস্যা:", error);
                 alert("পেমেন্ট রিজেক্ট করতে সমস্যা হয়েছে।");
-            }
-        }
-
-        function editBook(bookId) {
-            const book = books.find(b => b.id === bookId);
-            const newPrice = prompt(`বইয়ের দাম পরিবর্তন করুন (${book.title}):`, book.price);
-            if (newPrice !== null) {
-                alert(`বইয়ের দাম পরিবর্তন করা হয়েছে: ৳ ${newPrice}`);
-                // In real app, update Firestore
-            }
-        }
-
-        function deleteBook(bookId) {
-            if (confirm('আপনি কি নিশ্চিত এই বইটি ডিলিট করতে চান?')) {
-                alert('বই ডিলিট করা হয়েছে!');
-                // In real app, update Firestore
             }
         }
 
