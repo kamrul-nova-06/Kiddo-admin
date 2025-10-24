@@ -487,7 +487,7 @@
                 <p>অ্যাডমিন প্যানেলে অ্যাক্সেস করতে লগইন করুন</p>
                 <div class="form-group">
                     <label for="adminEmail">ইমেইল</label>
-                    <input type="email" id="adminEmail" placeholder="admin@kiddo.com" required>
+                    <input type="email" id="adminEmail" placeholder="ইমেইল দিন" required>
                 </div>
                 <div class="form-group">
                     <label for="adminPassword">পাসওয়ার্ড</label>
@@ -566,50 +566,11 @@
         // Admin credentials (In production, use Firebase Auth with custom claims)
         const ADMIN_CREDENTIALS = {
             email: "admin@kiddo.com",
-            password: "admin123"
+            password: "kiddo123"
         };
 
         // Sample book data (same as user site)
-        const books = [
-            {
-                id: 1,
-                title: "বাংলা শিশু শিক্ষা",
-                description: "বাংলা ভাষা শেখার জন্য প্রাথমিক বই",
-                price: 0,
-                isPremium: false,
-                downloadCount: 1250,
-                year: 2024
-            },
-            {
-                id: 2,
-                title: "ইংরেজি এ বি সি",
-                description: "ইংরেজি বর্ণমালা শেখার বই",
-                price: 0,
-                isPremium: false,
-                downloadCount: 980,
-                year: 2024
-            },
-            {
-                id: 5,
-                title: "প্রিমিয়াম সাইন্স কিড",
-                description: "বিজ্ঞানের মজার এক্সপেরিমেন্ট",
-                price: 50,
-                isPremium: true,
-                downloadCount: 320,
-                year: 2024,
-                driveLink: "https://drive.google.com/file/d/1premium1/view?usp=sharing"
-            },
-            {
-                id: 6,
-                title: "কম্পিউটার বেসিক",
-                description: "কম্পিউটার শেখার সম্পূর্ণ গাইড",
-                price: 80,
-                isPremium: true,
-                downloadCount: 280,
-                year: 2024,
-                driveLink: "https://drive.google.com/file/d/1premium2/view?usp=sharing"
-            }
-        ];
+        const books = [ ];
 
         // Initialize the app
         function initApp() {
